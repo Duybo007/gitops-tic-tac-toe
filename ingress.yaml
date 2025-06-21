@@ -3,9 +3,14 @@ kind: Ingress
 metadata:
   name: tic-tac-toe-ingress
   annotations:
-    kubernetes.io/ingress.class: nginx
-    # Add additional annotations as needed for your specific ingress controller
-    # nginx.ingress.kubernetes.io/rewrite-target: /
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:YOUR_ACCOUNT_ID:certificate/YOUR_CERT_ID
+    alb.ingress.kubernetes.io/ssl-redirect: '443'
+    alb.ingress.kubernetes.io/group.name: tic-tac-toe
+    alb.ingress.kubernetes.io/group.order: '1'
 spec:
   rules:
   - host: tic-tac-toe.duyngo.xyz  # Replace with your actual domain
