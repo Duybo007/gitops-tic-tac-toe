@@ -1,30 +1,32 @@
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: tic-tac-toe-ingress
-  annotations:
-    kubernetes.io/ingress.class: alb
-    alb.ingress.kubernetes.io/scheme: internet-facing
-    alb.ingress.kubernetes.io/target-type: ip
-    # alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
-    # alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:658642482266:certificate/8a307e10-5bf5-4538-be99-c0627e090da3
-    # alb.ingress.kubernetes.io/ssl-redirect: '443'
-    # alb.ingress.kubernetes.io/group.name: tic-tac-toe
-    # alb.ingress.kubernetes.io/group.order: '1'
-spec:
-  rules:
-  - host: tic-tac-toe.duyngo.xyz  # Replace with your actual domain
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: tic-tac-toe
-            port:
-              number: 80
-  # Uncomment and configure if you want TLS
-  # tls:
-  # - hosts:
-  #   - tic-tac-toe.example.com
-  #   secretName: tic-tac-toe-tls
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: tic-tac-toe-ingress
+#   annotations:
+#     kubernetes.io/ingress.class: alb
+#     alb.ingress.kubernetes.io/scheme: internet-facing
+#     alb.ingress.kubernetes.io/target-type: ip
+
+    
+#     # alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
+#     # alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:658642482266:certificate/8a307e10-5bf5-4538-be99-c0627e090da3
+#     # alb.ingress.kubernetes.io/ssl-redirect: '443'
+#     # alb.ingress.kubernetes.io/group.name: tic-tac-toe
+#     # alb.ingress.kubernetes.io/group.order: '1'
+# spec:
+#   rules:
+#   - host: tic-tac-toe.duyngo.xyz  # Replace with your actual domain
+#     http:
+#       paths:
+#       - path: /
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: tic-tac-toe
+#             port:
+#               number: 80
+#   # Uncomment and configure if you want TLS
+#   # tls:
+#   # - hosts:
+#   #   - tic-tac-toe.example.com
+#   #   secretName: tic-tac-toe-tls
